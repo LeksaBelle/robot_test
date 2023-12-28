@@ -1,15 +1,24 @@
 *** Settings ***
 Library    SeleniumLibrary
 
+*** Variables ***
+${URL}    https://opensource-demo.orangehrmlive.com
+${PASS}    admin123
+${USER}    Admin
+
 *** Test Cases ***
 Simple Login Test
-    Open Browser    https://opensource-demo.orangehrmlive.com    chrome
+    Open Browser    ${URL}    chrome
     Set Browser Implicit Wait    3 sec
-    Input Text    name=username    Admin
-    Input Password    name=password    admin123
-    Click Button    class=oxd-button
+    Login To Site
     Click Element    class=oxd-userdropdown-name
     Click Element    link=Logout
-    Sleep    5 sec
+    Sleep    2 sec
     Close Browser
     Log    Done
+
+*** Keywords ***
+Login To Site
+    Input Text    name=username    ${USER}
+    Input Password    name=password    ${PASS}
+    Click Button    class=oxd-button
