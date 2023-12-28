@@ -10,6 +10,7 @@ ${USER}    Admin
 
 *** Test Cases ***
 Simple Login Test
+    [Tags]    login    web
     Login To Site
     Click Element    class=oxd-userdropdown-name
     Click Element    link=Logout
